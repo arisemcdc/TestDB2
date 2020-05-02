@@ -3,6 +3,7 @@ package com.example.testdb2
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.user_item.view.*
 
@@ -27,7 +28,7 @@ class UserHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     var user: User? = null
         set(value) {
             field = value
-            itemView.userTextView.text = value?.User?.name.toString()
-            itemView.ageTextView.text = value?.User?.age.toString()
+            itemView.userTextView.text = value?.user.name.text
+            itemView.ageTextView.text = value?.user.age.text
         }
 }
