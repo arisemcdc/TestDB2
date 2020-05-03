@@ -7,7 +7,7 @@ import androidx.room.*
 @Dao
 interface UsersDAO {
     @Query("SELECT * FROM users")
-    fun getUsers(): MutableLiveData<List<User>>
+    fun getUsers(): LiveData<List<User>>
     @Insert
     fun insert(user: User)
     @Update
