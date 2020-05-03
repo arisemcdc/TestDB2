@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.user_item.view.*
 
-class UserListAdapter(val users: MutableLiveData<List<User>>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class UserListAdapter(val users: List<User>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val viewHolder = UserHolder(
             LayoutInflater.from(parent.context)
@@ -16,11 +16,11 @@ class UserListAdapter(val users: MutableLiveData<List<User>>): RecyclerView.Adap
         return viewHolder
     }
 
-    override fun getItemCount() = users.value?.size
+    override fun getItemCount() = users.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is UserHolder) {
-            holder.user = users.[position]
+            holder.user = users[position]
         }
     }
 }
@@ -28,7 +28,7 @@ class UserHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     var user: User? = null
         set(value) {
             field = value
-            itemView.userTextView.text = value?.user.name.text
-            itemView.ageTextView.text = value?.user.age.toString()
+            itemView.userTextView.text = value?.name
+            itemView.ageTextView.text = value?.age.toString()
         }
 }

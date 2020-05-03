@@ -23,7 +23,9 @@ class MainActivity : AppCompatActivity() {
         val db=Room.databaseBuilder(applicationContext, RoomDB::class.java, "DB").allowMainThreadQueries().build()
         val users = db.userDao().getUsers()
         usersList.layoutManager =  LinearLayoutManager(this)
-        usersList.adapter = UserListAdapter(users)
+        users.value?.let {
+            usersList.adapter = UserListAdapter(it) }
+
         users.observe(this, Observer {
             userListAdapter = UserListAdapter(it)
            usersList.adapter = userListAdapter
