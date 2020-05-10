@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.user_item.view.*
 
 class UserListAdapter(val users: List<User>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -30,5 +31,7 @@ class UserHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
             field = value
             itemView.userTextView.text = value?.name
             itemView.ageTextView.text = value?.age.toString()
+            itemView.idTextView.text = value?.id.toString()
+            itemView.dateOfBirthTextView.setText(value?.dateOfBirth.toString())
         }
 }
